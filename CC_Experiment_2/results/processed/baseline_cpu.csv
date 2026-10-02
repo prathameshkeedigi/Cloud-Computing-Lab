@@ -1,0 +1,3 @@
+measurement,threads,total_time_s,total_events,events_per_second,lat_min_ms,lat_avg_ms,lat_max_ms,lat_p95_ms,fairness_events_avg,fairness_events_stddev
+Baseline run (terminal),4,30.0007,202098,6736.23,0.57,0.59,7.64,0.64,50524.5000,428.45
+Baseline run (saved to cpu.txt),4,30.0003,198529,6617.37,0.57,0.60,7.54,0.63,49632.2500,173.87

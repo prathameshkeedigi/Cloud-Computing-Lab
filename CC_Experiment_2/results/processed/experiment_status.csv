@@ -1,0 +1,10 @@
+step,experiment,vm_status,container_status,note
+7,Baseline CPU,Measured,-,two 4-thread runs
+8,CPU performance,Measured,Not captured,VM: 1/2/4/8 threads x 2 runs; container: not shown
+9,Memory performance,Not captured,Not captured,no sysbench memory output in screenshots
+11-12,Disk I/O (fio),Not captured,Measured,seq-write + random-read inside container (2 runs)
+13,Network (iperf3),Not captured,Not captured,no iperf3 output in screenshots
+14-16,FastAPI application,Not captured,Partial,image built + Uvicorn started; ab/wrk refused
+17,Startup time,Not captured,Not captured,commands issued; timing output not captured
+18,Scalability,Measured,Not captured,second VM CPU scalability run
+19-23,Automation and analysis,Done,Done,run_cpu.sh executed; CSV used manual example values

@@ -1,0 +1,10 @@
+# Transcribed from experiment screenshots (fio-3.36 inside the vm-container-benchmark container)
+random-read: (g=0): bs=4k, ioengine=psync, iodepth=16
+note: both iodepth >= 1 and synchronous I/O engine are selected, queue depth will be capped at 1
+  IOPS=14662, BW=57.3MiB/s (60.1MB/s)
+  clat (usec): min=41, max=3000, avg=67.69, stdev=16.53
+  clat percentiles (usec): 50.00th=[67], 90.00th=[76], 99.00th=[115], 99.90th=[221]
+  cpu: sys=31.84%
+Run status group 0 (all jobs):
+  READ: bw=57.3MiB/s (60.1MB/s), run=30001msec
+Disk stats: sda util=83.9%
