@@ -1,0 +1,4 @@
+Resource,Total,Used,Free,Buff_cache,Available,Unit
+Memory,7.7,2.0,3.8,1.9,5.4,GiB
+Swap,2.0,0.0,2.0,,,GiB
+Root_disk_/dev/sda3,20,12,6.5,,,GB
