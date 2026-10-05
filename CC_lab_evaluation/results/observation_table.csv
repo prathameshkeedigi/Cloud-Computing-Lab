@@ -1,0 +1,6 @@
+workload,concurrency,total_requests,failed_requests,avg_response_ms,median_response_ms,p95_response_ms,max_response_ms,throughput_rps,total_cpu_pct,total_mem_mib
+W1,1,5205,0,11.04,11.0,14.0,41.12,89.45,128.17,269.81
+W2,2,9348,0,12.32,12.0,17.0,66.74,160.58,190.54,268.38
+W3,4,9361,0,24.69,24.0,35.0,73.84,160.83,234.66,257.35
+W4,8,8725,0,53.16,52.0,74.0,112.38,149.93,230.32,270.36
+W5,16,8581,0,108.19,100.0,160.0,277.33,147.48,225.74,269.06
