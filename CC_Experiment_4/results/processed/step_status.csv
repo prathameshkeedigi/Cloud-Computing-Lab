@@ -1,0 +1,13 @@
+step,task,status,note
+1,Verify the cluster (get nodes -o wide),Captured,3 nodes Ready (screenshot 01)
+2,kubectl top nodes (before),Not captured,Metrics Server not checked or installed
+3,Deployment with requests and limits,Captured,apply -f deployment.yaml (screenshot 01)
+4,Pod scheduling (get pods -o wide + events),Partial,pods captured; events not captured
+5,describe nodes + top pods,Not captured,allocated resources per node not recorded
+6,Scale to 12 replicas,Captured,screenshot 02
+7,NodePort Service,Captured,apply -f service.yaml (screenshot 02)
+8,Services / Endpoints / EndpointSlices,Partial,endpoints captured; endpointslices not captured
+9,Test the application,Done differently,curl Pod + port-forward (screenshots 03-04)
+10,kubectl top (after scaling),Not captured,needs Metrics Server
+11,Clean up,Captured,service + deployment deleted (screenshot 04)
+Ext,Pending Pod with a large CPU request,Not done,optional extension

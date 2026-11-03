@@ -1,0 +1,14 @@
+# Experiment 4 - NodePort Service in front of the resource-demo Pods (manual Step 7)
+# Apply with:  kubectl apply -f k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort
+  selector:
+    app: resource-demo            # every Ready Pod with this label becomes a backend endpoint
+  ports:
+  - port: 80                      # Service port (ClusterIP:80)
+    targetPort: 80                # container port of nginx
+    nodePort: 30080               # opened on every node (range 30000-32767)

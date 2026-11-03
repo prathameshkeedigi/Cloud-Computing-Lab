@@ -1,0 +1,4 @@
+node,role,status,age_at_check,k8s_version,docker_container_id,node_ip,pod_subnet_seen,host_port_mapping
+kind-control-plane,control-plane,Ready,2m38s,v1.37.0,446b46678d6a,172.18.0.4,10.244.0.x,127.0.0.1:7295->6443/tcp
+kind-worker,worker,Ready,2m29s,v1.37.0,2a6126e7f3c4,172.18.0.2,10.244.2.x,
+kind-worker2,worker,Ready,2m29s,v1.37.0,84e296cfc528,172.18.0.3,10.244.1.x,

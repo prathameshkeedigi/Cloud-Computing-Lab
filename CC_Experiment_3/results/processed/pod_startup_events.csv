@@ -1,0 +1,6 @@
+pod,event,from,time_ist,seconds_after_start,note
+web-5fc9f4bf66-6bm4p,Scheduled,default-scheduler,18:45:05,0.0,Start Time of the Pod; assigned to kind-worker
+web-5fc9f4bf66-6bm4p,Pulling,kubelet,18:45:05,0.0,"pull of image ""nginx"" begins (Events age 15m)"
+web-5fc9f4bf66-6bm4p,Pulled,kubelet,18:46:41,96.352,"pull took 1m36.352s; image size 63,903,938 bytes"
+web-5fc9f4bf66-6bm4p,Created,kubelet,18:46:42,97.0,container created (Events age 14m)
+web-5fc9f4bf66-6bm4p,Started,kubelet,18:46:42,97.0,State Started: Tue 27 Oct 2026 18:46:42 +0530

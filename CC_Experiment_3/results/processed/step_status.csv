@@ -1,0 +1,10 @@
+part,steps,task,status,evidence
+1,1.1-1.5,Install WSL 2 / Docker Desktop / kubectl / kind,Done earlier,tools already present (Part 2 output)
+2,2.1-2.4,Check the tools,Captured,screenshots 01-02
+3,3.1-3.5,Create kind-config.yaml,Captured,screenshots 02-03
+4,4.1,Create the 3-node cluster,Captured,screenshot 03
+4,4.2-4.5,Check cluster / nodes / containers / system Pods,Captured,screenshot 04
+5,5.1-5.3,Deploy NGINX (3 replicas) and see placement,Captured,screenshots 04-05
+5,5.4,Describe one Pod (optional),Captured,screenshots 06-07
+6,6.1-6.2,Scale to 6 replicas,Captured,screenshot 07
+6,6.3-6.4,Delete a Pod and confirm self-healing,Captured,screenshot 07

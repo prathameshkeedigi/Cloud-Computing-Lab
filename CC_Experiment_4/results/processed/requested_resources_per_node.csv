@@ -1,0 +1,7 @@
+replicas,node,resource_demo_pods,cpu_request_m,cpu_limit_m,memory_request_Mi,memory_limit_Mi
+6,kind-control-plane,0,0,0,0,0
+6,kind-worker,3,300,600,192,384
+6,kind-worker2,3,300,600,192,384
+12,kind-control-plane,0,0,0,0,0
+12,kind-worker,6,600,1200,384,768
+12,kind-worker2,6,600,1200,384,768

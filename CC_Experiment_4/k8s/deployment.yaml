@@ -1,0 +1,26 @@
+# Experiment 4 - Deployment with CPU / memory requests and limits (manual Step 3)
+# Apply with:  kubectl apply -f k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-demo
+spec:
+  replicas: 6                     # scaled to 12 later with kubectl scale (Step 6)
+  selector:
+    matchLabels:
+      app: resource-demo          # the Deployment manages Pods with this label
+  template:
+    metadata:
+      labels:
+        app: resource-demo        # the Service (service.yaml) selects this label too
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:               # reserved on the node; used by the scheduler
+            cpu: "100m"           # 0.1 CPU core
+            memory: "64Mi"
+          limits:                 # the most the container may use
+            cpu: "200m"           # 0.2 CPU core (throttled above this)
+            memory: "128Mi"       # killed (OOMKilled) above this

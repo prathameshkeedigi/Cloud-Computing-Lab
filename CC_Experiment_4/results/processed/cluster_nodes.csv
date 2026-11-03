@@ -1,0 +1,4 @@
+node,role,status,age,k8s_version,internal_ip,os_image,kernel,container_runtime,pod_subnet_seen
+kind-control-plane,control-plane,Ready,6d23h,v1.37.0,172.18.0.4,Debian GNU/Linux 13 (trixie),6.18.54.1-microsoft-standard-WSL2 (amd64),containerd://2.3.4,10.244.0.x
+kind-worker,worker,Ready,6d23h,v1.37.0,172.18.0.2,Debian GNU/Linux 13 (trixie),6.18.54.1-microsoft-standard-WSL2 (amd64),containerd://2.3.4,10.244.2.x
+kind-worker2,worker,Ready,6d23h,v1.37.0,172.18.0.3,Debian GNU/Linux 13 (trixie),6.18.54.1-microsoft-standard-WSL2 (amd64),containerd://2.3.4,10.244.1.x

@@ -1,0 +1,3 @@
+deployment,container,cpu_request_m,cpu_limit_m,memory_request_Mi,memory_limit_Mi,qos_class
+resource-demo,nginx,100,200,64,128,Burstable (requests < limits)
+web (Experiment 3),nginx,0,0,0,0,BestEffort (no requests or limits)

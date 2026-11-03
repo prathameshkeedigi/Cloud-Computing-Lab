@@ -1,0 +1,19 @@
+# Transcribed from screenshots 04-05. Manual Steps 5.1-5.3.
+PS C:\Users\Admin\k8s-lab> kubectl create deployment web --image=nginx --replicas=3
+deployment.apps/web created
+
+PS C:\Users\Admin\k8s-lab> kubectl get deployments
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+web    0/3     3            0           7s
+
+PS C:\Users\Admin\k8s-lab> kubectl get pods -o wide
+NAME                   READY   STATUS              RESTARTS   AGE   IP       NODE
+web-5fc9f4bf66-6bm4p   0/1     ContainerCreating   0          20s   <none>   kind-worker
+web-5fc9f4bf66-8d6dj   0/1     ContainerCreating   0          20s   <none>   kind-worker2
+web-5fc9f4bf66-wtrbg   0/1     ContainerCreating   0          20s   <none>   kind-worker2
+
+PS C:\Users\Admin\k8s-lab> kubectl get pods -o wide
+NAME                   READY   STATUS    RESTARTS   AGE   IP           NODE
+web-5fc9f4bf66-6bm4p   1/1     Running   0          15m   10.244.2.2   kind-worker
+web-5fc9f4bf66-8d6dj   1/1     Running   0          15m   10.244.1.3   kind-worker2
+web-5fc9f4bf66-wtrbg   1/1     Running   0          15m   10.244.1.2   kind-worker2

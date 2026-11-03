@@ -1,0 +1,11 @@
+item,value,source
+Service name,nginx-service,kubectl get services
+Type,NodePort,kubectl get services
+ClusterIP,10.96.58.123,kubectl get services
+Ports,80:30080/TCP,kubectl get services
+Selector,app=resource-demo,service.yaml
+Endpoints shown,"10.244.1.10:80, 10.244.1.5:80, 10.244.1.6:80",kubectl get endpoints nginx-service
+Endpoints hidden,9 more,kubectl get endpoints nginx-service
+Endpoints total,12,3 shown + 9 more = all 12 resource-demo Pods
+In-cluster test,HTTP page 'Welcome to nginx!',kubectl run test-curl ... http://nginx-service:80
+port-forward test,2 connections handled on 127.0.0.1:30080,kubectl port-forward service/nginx-service 30080:80

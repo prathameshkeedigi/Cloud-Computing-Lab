@@ -1,0 +1,26 @@
+# Transcribed from screenshots 02-03. Manual Parts 3 and 4.1.
+PS C:\Users\Admin> mkdir k8s-lab
+    Directory: C:\Users\Admin
+Mode                 LastWriteTime         Length Name
+d-----        10/27/2026   6:35 PM                k8s-lab
+
+PS C:\Users\Admin> cd k8s-lab
+PS C:\Users\Admin\k8s-lab> notepad kind-config.yaml
+PS C:\Users\Admin\k8s-lab> Get-ChildItem
+    Directory: C:\Users\Admin\k8s-lab
+Mode                 LastWriteTime         Length Name
+-a----        10/27/2026   6:35 PM            118 kind-config.yaml
+
+PS C:\Users\Admin\k8s-lab> kind create cluster --config kind-config.yaml
+Creating cluster "kind" ...
+ [ok] Ensuring node image (kindest/node:v1.37.0)
+ [ok] Preparing nodes
+ [ok] Writing configuration
+ [ok] Starting control-plane
+ [ok] Installing CNI
+ [ok] Installing StorageClass
+ [ok] Joining worker nodes
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind

@@ -1,0 +1,54 @@
+# Transcribed from screenshots 06-07. Manual Step 5.4 (optional).
+PS C:\Users\Admin\k8s-lab> kubectl describe pod web-5fc9f4bf66-6bm4p
+Name:             web-5fc9f4bf66-6bm4p
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             kind-worker/172.18.0.2
+Start Time:       Tue, 27 Oct 2026 18:45:05 +0530
+Labels:           app=web
+                  pod-template-hash=5fc9f4bf66
+Annotations:      <none>
+Status:           Running
+IP:               10.244.2.2
+Controlled By:    ReplicaSet/web-5fc9f4bf66
+Containers:
+  nginx:
+    Container ID:   containerd://a4c896b11311c32ad3e99fba457c559f89a76c80de2e8718f7674b42e29ee105
+    Image:          nginx
+    Image ID:       docker.io/library/nginx@sha256:4c41e2d0a3a55b325ed572cd0200bdb72af1433c3daa2bca6ef8eea68ce504a2
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 27 Oct 2026 18:46:42 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-pzcld (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  kube-api-access-pzcld:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  15m   default-scheduler  Successfully assigned default/web-5fc9f4bf66-6bm4p to kind-worker
+  Normal  Pulling    15m   kubelet            spec.containers{nginx}: Pulling image "nginx"
+  Normal  Pulled     14m   kubelet            spec.containers{nginx}: Successfully pulled image "nginx" in 1m36.352s (1m36.352s including waiting). Image size: 63903938 bytes.
+  Normal  Created    14m   kubelet            spec.containers{nginx}: Container created
+  Normal  Started    14m   kubelet            spec.containers{nginx}: Container started

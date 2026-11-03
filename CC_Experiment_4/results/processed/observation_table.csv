@@ -1,0 +1,8 @@
+experiment,observation_to_record,result
+Cluster verification,Status of all three nodes,"3/3 Ready, v1.37.0, Debian 13, containerd 2.3.4"
+Initial resource utilization,CPU and memory usage of each node,Not captured (kubectl top nodes not run)
+Six replicas,Number of pods scheduled on each node,"control-plane 0, kind-worker 3, kind-worker2 3"
+Twelve replicas,Updated pod distribution across nodes,"control-plane 0, kind-worker 6, kind-worker2 6"
+Resource allocation,CPU and memory requests and limits,"per Pod: request 100m / 64Mi, limit 200m / 128Mi; per worker at 12 replicas: requests 600m / 384Mi, limits 1200m / 768Mi (calculated)"
+Load balancing,Service backend endpoints and application response,"NodePort 80:30080, ClusterIP 10.96.58.123, 12 endpoints; 'Welcome to nginx!' through the Service"
+Final utilization,CPU and memory usage after scaling,Not captured (kubectl top not run)

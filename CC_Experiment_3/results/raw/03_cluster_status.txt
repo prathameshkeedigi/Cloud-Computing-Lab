@@ -1,0 +1,32 @@
+# Transcribed from screenshot 04. Manual Steps 4.2-4.5.
+PS C:\Users\Admin\k8s-lab> kubectl cluster-info --context kind-kind
+Kubernetes control plane is running at https://127.0.0.1:7295
+CoreDNS is running at https://127.0.0.1:7295/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+PS C:\Users\Admin\k8s-lab> kubectl get nodes
+NAME                 STATUS   ROLES           AGE     VERSION
+kind-control-plane   Ready    control-plane   2m38s   v1.37.0
+kind-worker          Ready    <none>          2m29s   v1.37.0
+kind-worker2         Ready    <none>          2m29s   v1.37.0
+
+PS C:\Users\Admin\k8s-lab> docker ps
+CONTAINER ID   IMAGE                  COMMAND                  CREATED         STATUS         PORTS                      NAMES
+2a6126e7f3c4   kindest/node:v1.37.0   "/usr/local/bin/entr..." 2 minutes ago   Up 2 minutes                              kind-worker
+446b46678d6a   kindest/node:v1.37.0   "/usr/local/bin/entr..." 2 minutes ago   Up 2 minutes   127.0.0.1:7295->6443/tcp   kind-control-plane
+84e296cfc528   kindest/node:v1.37.0   "/usr/local/bin/entr..." 2 minutes ago   Up 2 minutes                              kind-worker2
+
+PS C:\Users\Admin\k8s-lab> kubectl get pods -n kube-system -o wide
+NAME                                         READY   STATUS    RESTARTS   AGE     IP           NODE
+coredns-559f6c778d-4pbqj                     1/1     Running   0          2m48s   10.244.0.3   kind-control-plane
+coredns-559f6c778d-csnm6                     1/1     Running   0          2m48s   10.244.0.2   kind-control-plane
+etcd-kind-control-plane                      1/1     Running   0          2m56s   172.18.0.4   kind-control-plane
+kindnet-lhmfw                                1/1     Running   0          2m48s   172.18.0.2   kind-worker
+kindnet-vgwc2                                1/1     Running   0          2m47s   172.18.0.3   kind-worker2
+kindnet-w8b8d                                1/1     Running   0          2m48s   172.18.0.4   kind-control-plane
+kube-apiserver-kind-control-plane            1/1     Running   0          2m56s   172.18.0.4   kind-control-plane
+kube-controller-manager-kind-control-plane   1/1     Running   0          2m56s   172.18.0.4   kind-control-plane
+kube-proxy-7pck5                             1/1     Running   0          2m48s   172.18.0.4   kind-control-plane
+kube-proxy-dv5rj                             1/1     Running   0          2m47s   172.18.0.2   kind-worker
+kube-proxy-qnfxz                             1/1     Running   0          2m47s   172.18.0.3   kind-worker2
+kube-scheduler-kind-control-plane            1/1     Running   0          2m56s   172.18.0.4   kind-control-plane
+(The NOMINATED NODE and READINESS GATES columns were <none> for every Pod.)

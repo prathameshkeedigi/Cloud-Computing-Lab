@@ -1,0 +1,6 @@
+check,command,when,desired,running,not_ready,screenshot
+1,kubectl get deployments,7 s after create,3,0,3,04
+2,kubectl get pods -o wide,20 s after create,3,0,3,04-05
+3,kubectl get pods -o wide,about 15 min after create,3,3,0,05
+4,kubectl get pods -o wide,10 s after scale to 6,6,6,0,07
+5,kubectl get pods,14 s after deleting one Pod,6,6,0,07

@@ -1,0 +1,33 @@
+# Transcribed from screenshots 03-04. Manual Steps 9 and 11.
+PS C:\Users\Admin\k8s-lab> kubectl run test-curl --rm -i --tty --image=curlimages/curl -- http://nginx-service:80
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+...
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+...
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+All commands and output from this session will be recorded in container logs, including credentials and sensitive information passed through the command prompt.
+If you don't see a command prompt, try pressing enter.
+warning: couldn't attach to pod/test-curl, falling back to streaming logs: unable to upgrade connection: container test-curl not found in pod test-curl_default
+<!DOCTYPE html>
+... (the same "Welcome to nginx!" page printed a second time) ...
+</html>
+pod "test-curl" deleted from default namespace
+
+PS C:\Users\Admin\k8s-lab> kubectl port-forward service/nginx-service 30080:80
+Forwarding from 127.0.0.1:30080 -> 80
+Forwarding from [::1]:30080 -> 80
+Handling connection for 30080
+Handling connection for 30080
+(stopped with Ctrl+C)
+
+PS C:\Users\Admin\k8s-lab> kubectl delete service nginx-service
+service "nginx-service" deleted from default namespace
+
+PS C:\Users\Admin\k8s-lab> kubectl delete deployment resource-demo
+deployment.apps "resource-demo" deleted from default namespace

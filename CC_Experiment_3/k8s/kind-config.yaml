@@ -1,0 +1,9 @@
+# Experiment 3 - kind cluster definition (manual Step 3.4)
+# One control-plane node and two worker nodes. Each node runs as a Docker container.
+# Create the cluster with:  kind create cluster --config k8s/kind-config.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
