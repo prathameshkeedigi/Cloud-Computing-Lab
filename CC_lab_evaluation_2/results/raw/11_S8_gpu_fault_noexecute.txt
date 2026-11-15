@@ -1,0 +1,34 @@
+==============================================================================
+Step 11 - S8 GPU fault - NoExecute evicts running Pods
+Started (UTC): 2026-11-15T18:35:22+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/06-gpu-fault-pods.yaml
+pod/ml-job-no-grace created
+pod/ml-job-grace-30s created
+pod/gpu-monitor created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME               READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+gpu-monitor        1/1     Running   0          3s    10.244.2.43   taints-lab-worker2   <none>           <none>
+ml-job-grace-30s   1/1     Running   0          3s    10.244.2.42   taints-lab-worker2   <none>           <none>
+ml-job-no-grace    1/1     Running   0          3s    10.244.2.41   taints-lab-worker2   <none>           <none>
+
+PS> kubectl taint nodes taints-lab-worker2 gpu-fault=true:NoExecute
+node/taints-lab-worker2 tainted
+
+Taint applied at 2026-11-15T18:35:25+00:00 UTC. Checking the Pods every 1 s for up to 60 s ...
+PS> kubectl get pods -n gpu-lab -o wide
+NAME          READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+gpu-monitor   1/1     Running   0          63s   10.244.2.43   taints-lab-worker2   <none>           <none>
+
+ml-job-no-grace   only hardware=gpu:NoSchedule (no fault toleration)   marked 0.4 s | gone 1.5
+ml-job-grace-30s  gpu-fault=true:NoExecute, tolerationSeconds 30       marked 31.0 s | gone 32.2
+gpu-monitor       gpu-fault:NoExecute (Exists), no time limit          marked - s | gone still running
+
+PS> kubectl taint nodes taints-lab-worker2 gpu-fault=true:NoExecute-
+node/taints-lab-worker2 untainted
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+pod "gpu-monitor" deleted from gpu-lab namespace
+

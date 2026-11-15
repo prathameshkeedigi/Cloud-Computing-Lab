@@ -1,0 +1,36 @@
+==============================================================================
+Step 06 - S3 ML job WITH toleration only - allowed on the GPU node, not forced
+Started (UTC): 2026-11-15T18:34:24+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/03-ml-training-toleration-only.yaml
+deployment.apps/ml-training created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                           READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+ml-training-59885bcccc-6mfgl   1/1     Running   0          3s    10.244.1.81   taints-lab-worker    <none>           <none>
+ml-training-59885bcccc-8mvk6   1/1     Running   0          3s    10.244.1.82   taints-lab-worker    <none>           <none>
+ml-training-59885bcccc-zfwtn   1/1     Running   0          3s    10.244.2.35   taints-lab-worker2   <none>           <none>
+ml-training-59885bcccc-zwf2n   1/1     Running   0          3s    10.244.2.34   taints-lab-worker2   <none>           <none>
+
+PS> kubectl describe pod -n gpu-lab ml-training-59885bcccc-6mfgl    (lines: Node, Node-Selectors, Tolerations, Events)
+Node:             taints-lab-worker/172.18.0.2
+Node-Selectors:              <none>
+Tolerations:                 hardware=gpu:NoSchedule
+                             node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  3s    default-scheduler  Successfully assigned gpu-lab/ml-training-59885bcccc-6mfgl to taints-lab-worker
+  Normal  Pulled     2s    kubelet            spec.containers{trainer}: Container image "python:3.12-alpine" already present on machine and can be accessed by the pod
+  Normal  Created    2s    kubelet            spec.containers{trainer}: Container created
+  Normal  Started    1s    kubelet            spec.containers{trainer}: Container started
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "ml-training" deleted from gpu-lab namespace
+pod "ml-training-59885bcccc-6mfgl" deleted from gpu-lab namespace
+pod "ml-training-59885bcccc-8mvk6" deleted from gpu-lab namespace
+pod "ml-training-59885bcccc-zfwtn" deleted from gpu-lab namespace
+pod "ml-training-59885bcccc-zwf2n" deleted from gpu-lab namespace
+

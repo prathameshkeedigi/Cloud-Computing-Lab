@@ -1,0 +1,4 @@
+node,role,role_in_scenario,taints_at_start,cpu,memory,max_pods,kubelet,runtime,os_image,kernel,internal_ip
+taints-lab-control-plane,control-plane,manager,node-role.kubernetes.io/control-plane:NoSchedule,16,8036544Ki,110,v1.37.0,containerd://2.3.4,Debian GNU/Linux 13 (trixie),6.6.87.2-microsoft-standard-WSL2,172.18.0.4
+taints-lab-worker,worker,general-purpose node,none,16,8036544Ki,110,v1.37.0,containerd://2.3.4,Debian GNU/Linux 13 (trixie),6.6.87.2-microsoft-standard-WSL2,172.18.0.2
+taints-lab-worker2,worker,GPU node (reserved),none,16,8036544Ki,110,v1.37.0,containerd://2.3.4,Debian GNU/Linux 13 (trixie),6.6.87.2-microsoft-standard-WSL2,172.18.0.3

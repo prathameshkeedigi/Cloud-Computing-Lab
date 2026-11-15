@@ -1,0 +1,13 @@
+snapshot,workload,control_plane,general_node_worker,gpu_node_worker2,pending
+S1 Baseline: no taint yet,website,0,2,2,0
+S1b 15 s after GPU taint: old Pods stay,website,0,2,2,0
+"S2 Website, no toleration",website,0,4,0,0
+"S3 ML job, toleration only",ml-training,0,2,2,0
+"S4 ML job, wrong toleration",ml-training-typo,0,4,0,0
+S5 Dedicated: website + ML job,ml-training,0,0,3,0
+S5 Dedicated: website + ML job,website,0,4,0,0
+S6 Maintenance + GPU hard taint: Pending,website,0,0,0,4
+S6b Maintenance over: Pods recover,website,0,4,0,0
+S7 Soft: GPU node avoided,website,0,4,0,0
+"S7b Soft: no other node, GPU node used",website,0,4,2,0
+S8 Before the GPU fault,gpu-fault-test,0,0,3,0

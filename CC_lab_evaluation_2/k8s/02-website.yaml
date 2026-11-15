@@ -1,0 +1,25 @@
+# Ordinary workload: the company WEBSITE (NGINX web server).
+# It has NO toleration, so it must never take the expensive GPU node.
+# Used in S1 (before the GPU node is reserved), S2, S6 and S7.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+  namespace: gpu-lab
+  labels: {app: website, tier: web}
+spec:
+  replicas: 4
+  selector:
+    matchLabels: {app: website}
+  template:
+    metadata:
+      labels: {app: website, tier: web}
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests: {cpu: 10m, memory: 16Mi}
+          limits: {cpu: 100m, memory: 64Mi}

@@ -1,0 +1,8 @@
+# One namespace for every object of this experiment.
+# Deleting it removes all the website and ML Pods in one step.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gpu-lab
+  labels:
+    lab: taints-tolerations

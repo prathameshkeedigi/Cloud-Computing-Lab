@@ -1,0 +1,52 @@
+# Special workload: an ML TRAINING job that should run on the GPU node.
+# (Simulated: kind nodes have no real GPU. The container prints training
+#  progress so its logs look like a job; the scheduling rules are real.)
+#
+# S3 - toleration ONLY (no nodeSelector).
+# The toleration matches the GPU node's taint  hardware=gpu:NoSchedule,
+# so the job is ALLOWED on the GPU node - but nothing sends it there.
+# Expected: the replicas spread over the general node AND the GPU node.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-training
+  namespace: gpu-lab
+  labels: {app: ml-training, tier: ml}
+spec:
+  replicas: 4
+  selector:
+    matchLabels: {app: ml-training}
+  template:
+    metadata:
+      labels: {app: ml-training, tier: ml}
+    spec:
+      tolerations:
+      - key: "hardware"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
+      containers:
+      - name: trainer
+        image: python:3.12-alpine
+        command: ["python", "-u", "-c"]
+        args:
+        - |
+          import math, os, signal, sys, time
+          node = os.environ.get("NODE_NAME", "?")
+          def stop(sig, frame):       # Kubernetes sends SIGTERM before stopping a Pod
+              print("SIGTERM received - saving checkpoint and exiting", flush=True)
+              sys.exit(0)
+          signal.signal(signal.SIGTERM, stop)
+          print(f"[simulated] ML training job started on node {node}")
+          loss = 2.5
+          for epoch in range(1, 100000):
+              s = sum(math.sqrt(i) for i in range(20000))   # small CPU work
+              loss = loss * 0.97
+              print(f"epoch {epoch:5d}  loss {loss:.4f}  node {node}")
+              time.sleep(5)
+        env:
+        - name: NODE_NAME
+          valueFrom: {fieldRef: {fieldPath: spec.nodeName}}
+        resources:
+          requests: {cpu: 20m, memory: 32Mi}
+          limits: {cpu: 200m, memory: 128Mi}

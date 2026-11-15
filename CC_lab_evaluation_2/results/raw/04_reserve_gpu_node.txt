@@ -1,0 +1,32 @@
+==============================================================================
+Step 04 - Reserve the GPU node: label + NoSchedule taint (running Pods are NOT evicted)
+Started (UTC): 2026-11-15T18:33:59+00:00
+==============================================================================
+
+PS> kubectl label nodes taints-lab-worker2 hardware=gpu --overwrite
+node/taints-lab-worker2 labeled
+
+PS> kubectl taint nodes taints-lab-worker2 hardware=gpu:NoSchedule
+node/taints-lab-worker2 tainted
+
+PS> kubectl get nodes -L hardware -o custom-columns=NODE:.metadata.name,TAINT-KEYS:.spec.taints[*].key,VALUES:.spec.taints[*].value,EFFECTS:.spec.taints[*].effect,HARDWARE-LABEL:.metadata.labels.hardware
+NODE                       TAINT-KEYS                              VALUES   EFFECTS      HARDWARE-LABEL
+taints-lab-control-plane   node-role.kubernetes.io/control-plane   <none>   NoSchedule   <none>
+taints-lab-worker          <none>                                  <none>   <none>       <none>
+taints-lab-worker2         hardware                                gpu      NoSchedule   gpu
+
+Waiting 15 s to show that NoSchedule does not remove Pods that are already running ...
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+website-58cccc4b78-67kxw   1/1     Running   0          21s   10.244.1.76   taints-lab-worker    <none>           <none>
+website-58cccc4b78-77fz8   1/1     Running   0          21s   10.244.2.32   taints-lab-worker2   <none>           <none>
+website-58cccc4b78-kghdk   1/1     Running   0          21s   10.244.2.33   taints-lab-worker2   <none>           <none>
+website-58cccc4b78-rxf8n   1/1     Running   0          21s   10.244.1.75   taints-lab-worker    <none>           <none>
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "website" deleted from gpu-lab namespace
+pod "website-58cccc4b78-67kxw" deleted from gpu-lab namespace
+pod "website-58cccc4b78-77fz8" deleted from gpu-lab namespace
+pod "website-58cccc4b78-kghdk" deleted from gpu-lab namespace
+pod "website-58cccc4b78-rxf8n" deleted from gpu-lab namespace
+

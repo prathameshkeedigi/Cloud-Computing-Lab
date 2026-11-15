@@ -1,0 +1,18 @@
+==============================================================================
+Step 03 - S1 Baseline - GPU node not reserved yet; website spreads everywhere
+Started (UTC): 2026-11-15T18:33:53+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/01-namespace.yaml
+namespace/gpu-lab created
+
+PS> kubectl apply -f k8s/02-website.yaml
+deployment.apps/website created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+website-58cccc4b78-67kxw   1/1     Running   0          4s    10.244.1.76   taints-lab-worker    <none>           <none>
+website-58cccc4b78-77fz8   1/1     Running   0          4s    10.244.2.32   taints-lab-worker2   <none>           <none>
+website-58cccc4b78-kghdk   1/1     Running   0          4s    10.244.2.33   taints-lab-worker2   <none>           <none>
+website-58cccc4b78-rxf8n   1/1     Running   0          4s    10.244.1.75   taints-lab-worker    <none>           <none>
+

@@ -1,0 +1,91 @@
+# S8 - NoExecute: the GPU node develops a fault and the admin drains it with
+#   kubectl taint nodes taints-lab-worker2 gpu-fault=true:NoExecute
+# NoExecute also removes Pods that are ALREADY running there.
+#
+# Three bare Pods (not Deployments, so an evicted Pod is not re-created and the
+# timeline stays clear). All three run on the GPU node before the fault.
+#
+# ml-job-no-grace : tolerates only the normal GPU taint          -> evicted at once
+# ml-job-grace-30s: tolerates the fault for 30 s (time to save a
+#                   checkpoint)                                  -> evicted after ~30 s
+# gpu-monitor     : a monitoring agent that must stay on the node
+#                   to report the fault (tolerates it forever)   -> keeps running
+#
+# Each container handles SIGTERM (the signal Kubernetes sends before it stops a
+# Pod) and exits at once, so "evicted" and "gone" are only a few seconds apart.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ml-job-no-grace
+  namespace: gpu-lab
+  labels: {app: gpu-fault-test, case: no-grace, tier: ml}
+spec:
+  nodeSelector: {hardware: gpu}
+  tolerations:
+  - {key: "hardware", operator: "Equal", value: "gpu", effect: "NoSchedule"}
+  containers:
+  - name: trainer
+    image: python:3.12-alpine
+    command: ["python", "-u", "-c"]
+    args:
+    - |
+      import signal, sys, time
+      signal.signal(signal.SIGTERM, lambda s, f: (print("SIGTERM - job stopped"), sys.exit(0)))
+      print("[simulated] ML job running (no fault toleration)")
+      while True:
+          time.sleep(5)
+    resources:
+      requests: {cpu: 20m, memory: 32Mi}
+      limits: {cpu: 200m, memory: 128Mi}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ml-job-grace-30s
+  namespace: gpu-lab
+  labels: {app: gpu-fault-test, case: grace-30s, tier: ml}
+spec:
+  nodeSelector: {hardware: gpu}
+  tolerations:
+  - {key: "hardware", operator: "Equal", value: "gpu", effect: "NoSchedule"}
+  - {key: "gpu-fault", operator: "Equal", value: "true", effect: "NoExecute", tolerationSeconds: 30}
+  containers:
+  - name: trainer
+    image: python:3.12-alpine
+    command: ["python", "-u", "-c"]
+    args:
+    - |
+      import signal, sys, time
+      signal.signal(signal.SIGTERM, lambda s, f: (print("SIGTERM - checkpoint saved, job stopped"), sys.exit(0)))
+      print("[simulated] ML job running (30 s grace to save a checkpoint)")
+      while True:
+          time.sleep(5)
+    resources:
+      requests: {cpu: 20m, memory: 32Mi}
+      limits: {cpu: 200m, memory: 128Mi}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-monitor
+  namespace: gpu-lab
+  labels: {app: gpu-fault-test, case: monitor, tier: system}
+spec:
+  nodeSelector: {hardware: gpu}
+  tolerations:
+  - {key: "hardware", operator: "Equal", value: "gpu", effect: "NoSchedule"}
+  - {key: "gpu-fault", operator: "Exists", effect: "NoExecute"}
+  containers:
+  - name: monitor
+    image: python:3.12-alpine
+    command: ["python", "-u", "-c"]
+    args:
+    - |
+      import signal, sys, time
+      signal.signal(signal.SIGTERM, lambda s, f: sys.exit(0))
+      while True:
+          print("[simulated] GPU health check: reporting node status")
+          time.sleep(10)
+    resources:
+      requests: {cpu: 10m, memory: 16Mi}
+      limits: {cpu: 100m, memory: 64Mi}

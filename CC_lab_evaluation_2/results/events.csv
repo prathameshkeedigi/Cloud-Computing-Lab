@@ -1,0 +1,229 @@
+first_seen_utc,last_seen_utc,type,reason,object,count,source,message
+2026-11-15T18:31:05Z,2026-11-15T18:35:25Z,Normal,TaintManagerEviction,Pod/ml-job-no-grace,2,taint-eviction-controller,Marking for deletion Pod gpu-lab/ml-job-no-grace
+2026-11-15T18:31:35Z,2026-11-15T18:35:55Z,Normal,TaintManagerEviction,Pod/ml-job-grace-30s,2,taint-eviction-controller,Marking for deletion Pod gpu-lab/ml-job-grace-30s
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 0 to 4
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,Scheduled,Pod/website-58cccc4b78-67kxw,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-67kxw to taints-lab-worker
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,Scheduled,Pod/website-58cccc4b78-77fz8,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-77fz8 to taints-lab-worker2
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,Scheduled,Pod/website-58cccc4b78-kghdk,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-kghdk to taints-lab-worker2
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,Scheduled,Pod/website-58cccc4b78-rxf8n,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-rxf8n to taints-lab-worker
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-77fz8
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-kghdk
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-rxf8n
+2026-11-15T18:33:54Z,2026-11-15T18:33:54Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-67kxw
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Pulled,Pod/website-58cccc4b78-67kxw,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Created,Pod/website-58cccc4b78-67kxw,1,kubelet,Container created
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Pulled,Pod/website-58cccc4b78-77fz8,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Created,Pod/website-58cccc4b78-77fz8,1,kubelet,Container created
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Pulled,Pod/website-58cccc4b78-kghdk,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Created,Pod/website-58cccc4b78-kghdk,1,kubelet,Container created
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Pulled,Pod/website-58cccc4b78-rxf8n,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:33:55Z,2026-11-15T18:33:55Z,Normal,Created,Pod/website-58cccc4b78-rxf8n,1,kubelet,Container created
+2026-11-15T18:33:56Z,2026-11-15T18:33:56Z,Normal,Started,Pod/website-58cccc4b78-67kxw,1,kubelet,Container started
+2026-11-15T18:33:56Z,2026-11-15T18:33:56Z,Normal,Started,Pod/website-58cccc4b78-77fz8,1,kubelet,Container started
+2026-11-15T18:33:56Z,2026-11-15T18:33:56Z,Normal,Started,Pod/website-58cccc4b78-kghdk,1,kubelet,Container started
+2026-11-15T18:33:56Z,2026-11-15T18:33:56Z,Normal,Started,Pod/website-58cccc4b78-rxf8n,1,kubelet,Container started
+2026-11-15T18:34:15Z,2026-11-15T18:34:15Z,Normal,Killing,Pod/website-58cccc4b78-67kxw,1,kubelet,Stopping container nginx
+2026-11-15T18:34:15Z,2026-11-15T18:34:15Z,Normal,Killing,Pod/website-58cccc4b78-77fz8,1,kubelet,Stopping container nginx
+2026-11-15T18:34:15Z,2026-11-15T18:34:15Z,Normal,Killing,Pod/website-58cccc4b78-kghdk,1,kubelet,Stopping container nginx
+2026-11-15T18:34:15Z,2026-11-15T18:34:15Z,Normal,Killing,Pod/website-58cccc4b78-rxf8n,1,kubelet,Stopping container nginx
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 0 to 4
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,Scheduled,Pod/website-58cccc4b78-dfdjr,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-dfdjr to taints-lab-worker
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,Scheduled,Pod/website-58cccc4b78-kgf95,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-kgf95 to taints-lab-worker
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,Scheduled,Pod/website-58cccc4b78-kjvbg,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-kjvbg to taints-lab-worker
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,Scheduled,Pod/website-58cccc4b78-q2m6g,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-q2m6g to taints-lab-worker
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-dfdjr
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-q2m6g
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-kjvbg
+2026-11-15T18:34:18Z,2026-11-15T18:34:18Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-kgf95
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Pulled,Pod/website-58cccc4b78-dfdjr,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Created,Pod/website-58cccc4b78-dfdjr,1,kubelet,Container created
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Started,Pod/website-58cccc4b78-dfdjr,1,kubelet,Container started
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Pulled,Pod/website-58cccc4b78-kgf95,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Created,Pod/website-58cccc4b78-kgf95,1,kubelet,Container created
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Started,Pod/website-58cccc4b78-kgf95,1,kubelet,Container started
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Pulled,Pod/website-58cccc4b78-kjvbg,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Created,Pod/website-58cccc4b78-kjvbg,1,kubelet,Container created
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Started,Pod/website-58cccc4b78-kjvbg,1,kubelet,Container started
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Pulled,Pod/website-58cccc4b78-q2m6g,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Created,Pod/website-58cccc4b78-q2m6g,1,kubelet,Container created
+2026-11-15T18:34:20Z,2026-11-15T18:34:20Z,Normal,Started,Pod/website-58cccc4b78-q2m6g,1,kubelet,Container started
+2026-11-15T18:34:22Z,2026-11-15T18:34:22Z,Normal,Killing,Pod/website-58cccc4b78-dfdjr,1,kubelet,Stopping container nginx
+2026-11-15T18:34:22Z,2026-11-15T18:34:22Z,Normal,Killing,Pod/website-58cccc4b78-kgf95,1,kubelet,Stopping container nginx
+2026-11-15T18:34:22Z,2026-11-15T18:34:22Z,Normal,Killing,Pod/website-58cccc4b78-kjvbg,1,kubelet,Stopping container nginx
+2026-11-15T18:34:22Z,2026-11-15T18:34:22Z,Normal,Killing,Pod/website-58cccc4b78-q2m6g,1,kubelet,Stopping container nginx
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,ScalingReplicaSet,Deployment/ml-training,1,deployment-controller,Scaled up replica set ml-training-59885bcccc from 0 to 4
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,Scheduled,Pod/ml-training-59885bcccc-6mfgl,1,default-scheduler,Successfully assigned gpu-lab/ml-training-59885bcccc-6mfgl to taints-lab-worker
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,Scheduled,Pod/ml-training-59885bcccc-8mvk6,1,default-scheduler,Successfully assigned gpu-lab/ml-training-59885bcccc-8mvk6 to taints-lab-worker
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,Scheduled,Pod/ml-training-59885bcccc-zfwtn,1,default-scheduler,Successfully assigned gpu-lab/ml-training-59885bcccc-zfwtn to taints-lab-worker2
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,Scheduled,Pod/ml-training-59885bcccc-zwf2n,1,default-scheduler,Successfully assigned gpu-lab/ml-training-59885bcccc-zwf2n to taints-lab-worker2
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-59885bcccc,1,replicaset-controller,Created pod: ml-training-59885bcccc-zwf2n
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-59885bcccc,1,replicaset-controller,Created pod: ml-training-59885bcccc-zfwtn
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-59885bcccc,1,replicaset-controller,Created pod: ml-training-59885bcccc-6mfgl
+2026-11-15T18:34:24Z,2026-11-15T18:34:24Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-59885bcccc,1,replicaset-controller,Created pod: ml-training-59885bcccc-8mvk6
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Pulled,Pod/ml-training-59885bcccc-6mfgl,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Created,Pod/ml-training-59885bcccc-6mfgl,1,kubelet,Container created
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Pulled,Pod/ml-training-59885bcccc-8mvk6,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Created,Pod/ml-training-59885bcccc-8mvk6,1,kubelet,Container created
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Pulled,Pod/ml-training-59885bcccc-zfwtn,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Created,Pod/ml-training-59885bcccc-zfwtn,1,kubelet,Container created
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Pulled,Pod/ml-training-59885bcccc-zwf2n,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:25Z,2026-11-15T18:34:25Z,Normal,Created,Pod/ml-training-59885bcccc-zwf2n,1,kubelet,Container created
+2026-11-15T18:34:26Z,2026-11-15T18:34:26Z,Normal,Started,Pod/ml-training-59885bcccc-6mfgl,1,kubelet,Container started
+2026-11-15T18:34:26Z,2026-11-15T18:34:26Z,Normal,Started,Pod/ml-training-59885bcccc-8mvk6,1,kubelet,Container started
+2026-11-15T18:34:26Z,2026-11-15T18:34:26Z,Normal,Started,Pod/ml-training-59885bcccc-zfwtn,1,kubelet,Container started
+2026-11-15T18:34:26Z,2026-11-15T18:34:26Z,Normal,Started,Pod/ml-training-59885bcccc-zwf2n,1,kubelet,Container started
+2026-11-15T18:34:28Z,2026-11-15T18:34:28Z,Normal,Killing,Pod/ml-training-59885bcccc-6mfgl,1,kubelet,Stopping container trainer
+2026-11-15T18:34:28Z,2026-11-15T18:34:28Z,Normal,Killing,Pod/ml-training-59885bcccc-8mvk6,1,kubelet,Stopping container trainer
+2026-11-15T18:34:28Z,2026-11-15T18:34:28Z,Normal,Killing,Pod/ml-training-59885bcccc-zfwtn,1,kubelet,Stopping container trainer
+2026-11-15T18:34:28Z,2026-11-15T18:34:28Z,Normal,Killing,Pod/ml-training-59885bcccc-zwf2n,1,kubelet,Stopping container trainer
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,ScalingReplicaSet,Deployment/ml-training-typo,1,deployment-controller,Scaled up replica set ml-training-typo-bbf664d69 from 0 to 4
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,Scheduled,Pod/ml-training-typo-bbf664d69-bn29g,1,default-scheduler,Successfully assigned gpu-lab/ml-training-typo-bbf664d69-bn29g to taints-lab-worker
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,Scheduled,Pod/ml-training-typo-bbf664d69-bw9dt,1,default-scheduler,Successfully assigned gpu-lab/ml-training-typo-bbf664d69-bw9dt to taints-lab-worker
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,Scheduled,Pod/ml-training-typo-bbf664d69-gwwht,1,default-scheduler,Successfully assigned gpu-lab/ml-training-typo-bbf664d69-gwwht to taints-lab-worker
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,Scheduled,Pod/ml-training-typo-bbf664d69-hrcdx,1,default-scheduler,Successfully assigned gpu-lab/ml-training-typo-bbf664d69-hrcdx to taints-lab-worker
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-typo-bbf664d69,1,replicaset-controller,Created pod: ml-training-typo-bbf664d69-bn29g
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-typo-bbf664d69,1,replicaset-controller,Created pod: ml-training-typo-bbf664d69-hrcdx
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-typo-bbf664d69,1,replicaset-controller,Created pod: ml-training-typo-bbf664d69-gwwht
+2026-11-15T18:34:29Z,2026-11-15T18:34:29Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-typo-bbf664d69,1,replicaset-controller,Created pod: ml-training-typo-bbf664d69-bw9dt
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Pulled,Pod/ml-training-typo-bbf664d69-bn29g,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Created,Pod/ml-training-typo-bbf664d69-bn29g,1,kubelet,Container created
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Pulled,Pod/ml-training-typo-bbf664d69-bw9dt,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Created,Pod/ml-training-typo-bbf664d69-bw9dt,1,kubelet,Container created
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Pulled,Pod/ml-training-typo-bbf664d69-gwwht,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Created,Pod/ml-training-typo-bbf664d69-gwwht,1,kubelet,Container created
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Pulled,Pod/ml-training-typo-bbf664d69-hrcdx,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:30Z,2026-11-15T18:34:30Z,Normal,Created,Pod/ml-training-typo-bbf664d69-hrcdx,1,kubelet,Container created
+2026-11-15T18:34:31Z,2026-11-15T18:34:31Z,Normal,Started,Pod/ml-training-typo-bbf664d69-bn29g,1,kubelet,Container started
+2026-11-15T18:34:31Z,2026-11-15T18:34:31Z,Normal,Started,Pod/ml-training-typo-bbf664d69-bw9dt,1,kubelet,Container started
+2026-11-15T18:34:31Z,2026-11-15T18:34:31Z,Normal,Started,Pod/ml-training-typo-bbf664d69-gwwht,1,kubelet,Container started
+2026-11-15T18:34:31Z,2026-11-15T18:34:31Z,Normal,Started,Pod/ml-training-typo-bbf664d69-hrcdx,1,kubelet,Container started
+2026-11-15T18:34:33Z,2026-11-15T18:34:33Z,Normal,Killing,Pod/ml-training-typo-bbf664d69-bn29g,1,kubelet,Stopping container trainer
+2026-11-15T18:34:33Z,2026-11-15T18:34:33Z,Normal,Killing,Pod/ml-training-typo-bbf664d69-bw9dt,1,kubelet,Stopping container trainer
+2026-11-15T18:34:33Z,2026-11-15T18:34:33Z,Normal,Killing,Pod/ml-training-typo-bbf664d69-gwwht,1,kubelet,Stopping container trainer
+2026-11-15T18:34:33Z,2026-11-15T18:34:33Z,Normal,Killing,Pod/ml-training-typo-bbf664d69-hrcdx,1,kubelet,Stopping container trainer
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 0 to 4
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,Scheduled,Pod/website-58cccc4b78-jfl82,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-jfl82 to taints-lab-worker
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,Scheduled,Pod/website-58cccc4b78-ljtvn,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-ljtvn to taints-lab-worker
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,Scheduled,Pod/website-58cccc4b78-srpq4,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-srpq4 to taints-lab-worker
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,Scheduled,Pod/website-58cccc4b78-z7xwg,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-z7xwg to taints-lab-worker
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-z7xwg
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-jfl82
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-ljtvn
+2026-11-15T18:34:34Z,2026-11-15T18:34:34Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-srpq4
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,ScalingReplicaSet,Deployment/ml-training,1,deployment-controller,Scaled up replica set ml-training-764dbccb48 from 0 to 3
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,Scheduled,Pod/ml-training-764dbccb48-9gkx8,1,default-scheduler,Successfully assigned gpu-lab/ml-training-764dbccb48-9gkx8 to taints-lab-worker2
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,Scheduled,Pod/ml-training-764dbccb48-qthzp,1,default-scheduler,Successfully assigned gpu-lab/ml-training-764dbccb48-qthzp to taints-lab-worker2
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,Scheduled,Pod/ml-training-764dbccb48-rqsj6,1,default-scheduler,Successfully assigned gpu-lab/ml-training-764dbccb48-rqsj6 to taints-lab-worker2
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-764dbccb48,1,replicaset-controller,Created pod: ml-training-764dbccb48-qthzp
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-764dbccb48,1,replicaset-controller,Created pod: ml-training-764dbccb48-9gkx8
+2026-11-15T18:34:35Z,2026-11-15T18:34:35Z,Normal,SuccessfulCreate,ReplicaSet/ml-training-764dbccb48,1,replicaset-controller,Created pod: ml-training-764dbccb48-rqsj6
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/ml-training-764dbccb48-9gkx8,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/ml-training-764dbccb48-9gkx8,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Started,Pod/ml-training-764dbccb48-9gkx8,1,kubelet,Container started
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/ml-training-764dbccb48-qthzp,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/ml-training-764dbccb48-qthzp,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Started,Pod/ml-training-764dbccb48-qthzp,1,kubelet,Container started
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/ml-training-764dbccb48-rqsj6,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/ml-training-764dbccb48-rqsj6,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Started,Pod/ml-training-764dbccb48-rqsj6,1,kubelet,Container started
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/website-58cccc4b78-jfl82,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/website-58cccc4b78-jfl82,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Started,Pod/website-58cccc4b78-jfl82,1,kubelet,Container started
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/website-58cccc4b78-ljtvn,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/website-58cccc4b78-ljtvn,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/website-58cccc4b78-srpq4,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/website-58cccc4b78-srpq4,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Pulled,Pod/website-58cccc4b78-z7xwg,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Created,Pod/website-58cccc4b78-z7xwg,1,kubelet,Container created
+2026-11-15T18:34:36Z,2026-11-15T18:34:36Z,Normal,Started,Pod/website-58cccc4b78-z7xwg,1,kubelet,Container started
+2026-11-15T18:34:37Z,2026-11-15T18:34:37Z,Normal,Started,Pod/website-58cccc4b78-ljtvn,1,kubelet,Container started
+2026-11-15T18:34:37Z,2026-11-15T18:34:37Z,Normal,Started,Pod/website-58cccc4b78-srpq4,1,kubelet,Container started
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/ml-training-764dbccb48-9gkx8,1,kubelet,Stopping container trainer
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/ml-training-764dbccb48-qthzp,1,kubelet,Stopping container trainer
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/ml-training-764dbccb48-rqsj6,1,kubelet,Stopping container trainer
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/website-58cccc4b78-jfl82,1,kubelet,Stopping container nginx
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/website-58cccc4b78-ljtvn,1,kubelet,Stopping container nginx
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/website-58cccc4b78-srpq4,1,kubelet,Stopping container nginx
+2026-11-15T18:34:44Z,2026-11-15T18:34:44Z,Normal,Killing,Pod/website-58cccc4b78-z7xwg,1,kubelet,Stopping container nginx
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 0 to 4
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Warning,FailedScheduling,Pod/website-58cccc4b78-6xwjq,1,default-scheduler,0/3 nodes are available: 3 node(s) had untolerated taint(s). preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Warning,FailedScheduling,Pod/website-58cccc4b78-hw67b,1,default-scheduler,0/3 nodes are available: 3 node(s) had untolerated taint(s). preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Warning,FailedScheduling,Pod/website-58cccc4b78-kbhhl,1,default-scheduler,0/3 nodes are available: 3 node(s) had untolerated taint(s). preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Warning,FailedScheduling,Pod/website-58cccc4b78-w8k9h,1,default-scheduler,0/3 nodes are available: 3 node(s) had untolerated taint(s). preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-w8k9h
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-hw67b
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-kbhhl
+2026-11-15T18:34:48Z,2026-11-15T18:34:48Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-6xwjq
+2026-11-15T18:35:04Z,2026-11-15T18:35:04Z,Normal,Scheduled,Pod/website-58cccc4b78-6xwjq,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-6xwjq to taints-lab-worker
+2026-11-15T18:35:04Z,2026-11-15T18:35:04Z,Normal,Scheduled,Pod/website-58cccc4b78-hw67b,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-hw67b to taints-lab-worker
+2026-11-15T18:35:04Z,2026-11-15T18:35:04Z,Normal,Scheduled,Pod/website-58cccc4b78-kbhhl,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-kbhhl to taints-lab-worker
+2026-11-15T18:35:04Z,2026-11-15T18:35:04Z,Normal,Scheduled,Pod/website-58cccc4b78-w8k9h,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-w8k9h to taints-lab-worker
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Pulled,Pod/website-58cccc4b78-6xwjq,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Created,Pod/website-58cccc4b78-6xwjq,1,kubelet,Container created
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Pulled,Pod/website-58cccc4b78-hw67b,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Created,Pod/website-58cccc4b78-hw67b,1,kubelet,Container created
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Pulled,Pod/website-58cccc4b78-kbhhl,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Created,Pod/website-58cccc4b78-kbhhl,1,kubelet,Container created
+2026-11-15T18:35:05Z,2026-11-15T18:35:05Z,Normal,Pulled,Pod/website-58cccc4b78-w8k9h,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:06Z,2026-11-15T18:35:06Z,Normal,Started,Pod/website-58cccc4b78-6xwjq,1,kubelet,Container started
+2026-11-15T18:35:06Z,2026-11-15T18:35:06Z,Normal,Started,Pod/website-58cccc4b78-hw67b,1,kubelet,Container started
+2026-11-15T18:35:06Z,2026-11-15T18:35:06Z,Normal,Created,Pod/website-58cccc4b78-w8k9h,1,kubelet,Container created
+2026-11-15T18:35:07Z,2026-11-15T18:35:07Z,Normal,Started,Pod/website-58cccc4b78-kbhhl,1,kubelet,Container started
+2026-11-15T18:35:07Z,2026-11-15T18:35:07Z,Normal,Started,Pod/website-58cccc4b78-w8k9h,1,kubelet,Container started
+2026-11-15T18:35:09Z,2026-11-15T18:35:09Z,Normal,Killing,Pod/website-58cccc4b78-6xwjq,1,kubelet,Stopping container nginx
+2026-11-15T18:35:09Z,2026-11-15T18:35:09Z,Normal,Killing,Pod/website-58cccc4b78-hw67b,1,kubelet,Stopping container nginx
+2026-11-15T18:35:09Z,2026-11-15T18:35:09Z,Normal,Killing,Pod/website-58cccc4b78-kbhhl,1,kubelet,Stopping container nginx
+2026-11-15T18:35:09Z,2026-11-15T18:35:09Z,Normal,Killing,Pod/website-58cccc4b78-w8k9h,1,kubelet,Stopping container nginx
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 0 to 4
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,Scheduled,Pod/website-58cccc4b78-5d829,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-5d829 to taints-lab-worker
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,Scheduled,Pod/website-58cccc4b78-5rnv9,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-5rnv9 to taints-lab-worker
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,Scheduled,Pod/website-58cccc4b78-8n8tc,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-8n8tc to taints-lab-worker
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,Scheduled,Pod/website-58cccc4b78-b9gbn,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-b9gbn to taints-lab-worker
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-8n8tc
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-b9gbn
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-5rnv9
+2026-11-15T18:35:12Z,2026-11-15T18:35:12Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-5d829
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Pulled,Pod/website-58cccc4b78-5rnv9,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Created,Pod/website-58cccc4b78-5rnv9,1,kubelet,Container created
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Pulled,Pod/website-58cccc4b78-8n8tc,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Created,Pod/website-58cccc4b78-8n8tc,1,kubelet,Container created
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Pulled,Pod/website-58cccc4b78-b9gbn,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:13Z,2026-11-15T18:35:13Z,Normal,Created,Pod/website-58cccc4b78-b9gbn,1,kubelet,Container created
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Pulled,Pod/website-58cccc4b78-5d829,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Created,Pod/website-58cccc4b78-5d829,1,kubelet,Container created
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Started,Pod/website-58cccc4b78-5d829,1,kubelet,Container started
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Started,Pod/website-58cccc4b78-5rnv9,1,kubelet,Container started
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Started,Pod/website-58cccc4b78-8n8tc,1,kubelet,Container started
+2026-11-15T18:35:14Z,2026-11-15T18:35:14Z,Normal,Started,Pod/website-58cccc4b78-b9gbn,1,kubelet,Container started
+2026-11-15T18:35:15Z,2026-11-15T18:35:15Z,Normal,ScalingReplicaSet,Deployment/website,1,deployment-controller,Scaled up replica set website-58cccc4b78 from 4 to 6
+2026-11-15T18:35:15Z,2026-11-15T18:35:15Z,Normal,Scheduled,Pod/website-58cccc4b78-c8sp9,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-c8sp9 to taints-lab-worker2
+2026-11-15T18:35:15Z,2026-11-15T18:35:15Z,Normal,Scheduled,Pod/website-58cccc4b78-j7hbq,1,default-scheduler,Successfully assigned gpu-lab/website-58cccc4b78-j7hbq to taints-lab-worker2
+2026-11-15T18:35:15Z,2026-11-15T18:35:15Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-j7hbq
+2026-11-15T18:35:15Z,2026-11-15T18:35:15Z,Normal,SuccessfulCreate,ReplicaSet/website-58cccc4b78,1,replicaset-controller,Created pod: website-58cccc4b78-c8sp9
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Pulled,Pod/website-58cccc4b78-c8sp9,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Created,Pod/website-58cccc4b78-c8sp9,1,kubelet,Container created
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Started,Pod/website-58cccc4b78-c8sp9,1,kubelet,Container started
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Pulled,Pod/website-58cccc4b78-j7hbq,1,kubelet,"Container image ""nginx:alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Created,Pod/website-58cccc4b78-j7hbq,1,kubelet,Container created
+2026-11-15T18:35:17Z,2026-11-15T18:35:17Z,Normal,Started,Pod/website-58cccc4b78-j7hbq,1,kubelet,Container started
+2026-11-15T18:35:18Z,2026-11-15T18:35:18Z,Normal,Killing,Pod/website-58cccc4b78-5d829,1,kubelet,Stopping container nginx
+2026-11-15T18:35:18Z,2026-11-15T18:35:18Z,Normal,Killing,Pod/website-58cccc4b78-5rnv9,1,kubelet,Stopping container nginx
+2026-11-15T18:35:18Z,2026-11-15T18:35:18Z,Normal,Killing,Pod/website-58cccc4b78-8n8tc,1,kubelet,Stopping container nginx
+2026-11-15T18:35:18Z,2026-11-15T18:35:18Z,Normal,Killing,Pod/website-58cccc4b78-b9gbn,1,kubelet,Stopping container nginx
+2026-11-15T18:35:19Z,2026-11-15T18:35:19Z,Normal,Killing,Pod/website-58cccc4b78-c8sp9,1,kubelet,Stopping container nginx
+2026-11-15T18:35:19Z,2026-11-15T18:35:19Z,Normal,Killing,Pod/website-58cccc4b78-j7hbq,1,kubelet,Stopping container nginx
+2026-11-15T18:35:22Z,2026-11-15T18:35:22Z,Normal,Scheduled,Pod/gpu-monitor,1,default-scheduler,Successfully assigned gpu-lab/gpu-monitor to taints-lab-worker2
+2026-11-15T18:35:22Z,2026-11-15T18:35:22Z,Normal,Scheduled,Pod/ml-job-grace-30s,1,default-scheduler,Successfully assigned gpu-lab/ml-job-grace-30s to taints-lab-worker2
+2026-11-15T18:35:22Z,2026-11-15T18:35:22Z,Normal,Scheduled,Pod/ml-job-no-grace,1,default-scheduler,Successfully assigned gpu-lab/ml-job-no-grace to taints-lab-worker2
+2026-11-15T18:35:23Z,2026-11-15T18:35:23Z,Normal,Pulled,Pod/ml-job-grace-30s,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:23Z,2026-11-15T18:35:23Z,Normal,Created,Pod/ml-job-grace-30s,1,kubelet,Container created
+2026-11-15T18:35:23Z,2026-11-15T18:35:23Z,Normal,Pulled,Pod/ml-job-no-grace,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:23Z,2026-11-15T18:35:23Z,Normal,Created,Pod/ml-job-no-grace,1,kubelet,Container created
+2026-11-15T18:35:24Z,2026-11-15T18:35:24Z,Normal,Pulled,Pod/gpu-monitor,1,kubelet,"Container image ""python:3.12-alpine"" already present on machine and can be accessed by the pod"
+2026-11-15T18:35:24Z,2026-11-15T18:35:24Z,Normal,Created,Pod/gpu-monitor,1,kubelet,Container created
+2026-11-15T18:35:24Z,2026-11-15T18:35:24Z,Normal,Started,Pod/gpu-monitor,1,kubelet,Container started
+2026-11-15T18:35:24Z,2026-11-15T18:35:24Z,Normal,Started,Pod/ml-job-grace-30s,1,kubelet,Container started
+2026-11-15T18:35:24Z,2026-11-15T18:35:24Z,Normal,Started,Pod/ml-job-no-grace,1,kubelet,Container started
+2026-11-15T18:35:25Z,2026-11-15T18:35:25Z,Normal,Killing,Pod/ml-job-no-grace,1,kubelet,Stopping container trainer
+2026-11-15T18:35:55Z,2026-11-15T18:35:55Z,Normal,Killing,Pod/ml-job-grace-30s,1,kubelet,Stopping container trainer
+2026-11-15T18:36:26Z,2026-11-15T18:36:26Z,Normal,Killing,Pod/gpu-monitor,1,kubelet,Stopping container monitor

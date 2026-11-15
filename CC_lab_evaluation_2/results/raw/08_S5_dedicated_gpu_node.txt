@@ -1,0 +1,44 @@
+==============================================================================
+Step 08 - S5 Dedicated GPU node - ML (toleration + nodeSelector) next to the website
+Started (UTC): 2026-11-15T18:34:34+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/02-website.yaml
+deployment.apps/website created
+
+PS> kubectl apply -f k8s/05-ml-training-dedicated.yaml
+deployment.apps/ml-training created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                           READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+ml-training-764dbccb48-9gkx8   1/1     Running   0          2s    10.244.2.38   taints-lab-worker2   <none>           <none>
+ml-training-764dbccb48-qthzp   1/1     Running   0          2s    10.244.2.36   taints-lab-worker2   <none>           <none>
+ml-training-764dbccb48-rqsj6   1/1     Running   0          2s    10.244.2.37   taints-lab-worker2   <none>           <none>
+website-58cccc4b78-jfl82       1/1     Running   0          3s    10.244.1.88   taints-lab-worker    <none>           <none>
+website-58cccc4b78-ljtvn       1/1     Running   0          3s    10.244.1.89   taints-lab-worker    <none>           <none>
+website-58cccc4b78-srpq4       1/1     Running   0          3s    10.244.1.90   taints-lab-worker    <none>           <none>
+website-58cccc4b78-z7xwg       1/1     Running   0          3s    10.244.1.87   taints-lab-worker    <none>           <none>
+
+PS> kubectl describe pod -n gpu-lab ml-training-764dbccb48-9gkx8    (lines: Node, Node-Selectors, Tolerations)
+Node:             taints-lab-worker2/172.18.0.3
+Node-Selectors:              hardware=gpu
+Tolerations:                 hardware=gpu:NoSchedule
+                             node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+PS> kubectl logs -n gpu-lab ml-training-764dbccb48-9gkx8 --tail=3
+[simulated] ML training job started on node taints-lab-worker2
+epoch     1  loss 2.4250  node taints-lab-worker2
+epoch     2  loss 2.3522  node taints-lab-worker2
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "ml-training" deleted from gpu-lab namespace
+deployment.apps "website" deleted from gpu-lab namespace
+pod "ml-training-764dbccb48-9gkx8" deleted from gpu-lab namespace
+pod "ml-training-764dbccb48-qthzp" deleted from gpu-lab namespace
+pod "ml-training-764dbccb48-rqsj6" deleted from gpu-lab namespace
+pod "website-58cccc4b78-jfl82" deleted from gpu-lab namespace
+pod "website-58cccc4b78-ljtvn" deleted from gpu-lab namespace
+pod "website-58cccc4b78-srpq4" deleted from gpu-lab namespace
+pod "website-58cccc4b78-z7xwg" deleted from gpu-lab namespace
+

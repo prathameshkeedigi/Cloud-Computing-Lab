@@ -1,0 +1,35 @@
+==============================================================================
+Step 05 - S2 Website WITHOUT toleration - kept off the GPU node
+Started (UTC): 2026-11-15T18:34:18+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/02-website.yaml
+deployment.apps/website created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+website-58cccc4b78-dfdjr   1/1     Running   0          3s    10.244.1.77   taints-lab-worker   <none>           <none>
+website-58cccc4b78-kgf95   1/1     Running   0          3s    10.244.1.79   taints-lab-worker   <none>           <none>
+website-58cccc4b78-kjvbg   1/1     Running   0          3s    10.244.1.78   taints-lab-worker   <none>           <none>
+website-58cccc4b78-q2m6g   1/1     Running   0          3s    10.244.1.80   taints-lab-worker   <none>           <none>
+
+PS> kubectl describe pod -n gpu-lab website-58cccc4b78-dfdjr    (lines: Node, Node-Selectors, Tolerations, Events)
+Node:             taints-lab-worker/172.18.0.2
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  3s    default-scheduler  Successfully assigned gpu-lab/website-58cccc4b78-dfdjr to taints-lab-worker
+  Normal  Pulled     1s    kubelet            spec.containers{nginx}: Container image "nginx:alpine" already present on machine and can be accessed by the pod
+  Normal  Created    1s    kubelet            spec.containers{nginx}: Container created
+  Normal  Started    1s    kubelet            spec.containers{nginx}: Container started
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "website" deleted from gpu-lab namespace
+pod "website-58cccc4b78-dfdjr" deleted from gpu-lab namespace
+pod "website-58cccc4b78-kgf95" deleted from gpu-lab namespace
+pod "website-58cccc4b78-kjvbg" deleted from gpu-lab namespace
+pod "website-58cccc4b78-q2m6g" deleted from gpu-lab namespace
+

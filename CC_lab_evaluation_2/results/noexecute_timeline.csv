@@ -1,0 +1,4 @@
+pod,toleration,marked_for_deletion_after_s,gone_after_s,watched_for_s
+ml-job-no-grace,only hardware=gpu:NoSchedule (no fault toleration),0.4,1.5,60.3
+ml-job-grace-30s,"gpu-fault=true:NoExecute, tolerationSeconds 30",31.0,32.2,60.3
+gpu-monitor,"gpu-fault:NoExecute (Exists), no time limit",not evicted,still running,60.3

@@ -1,0 +1,28 @@
+==============================================================================
+Step 07 - S4 ML job with a TYPO in its toleration (gpus) - still blocked
+Started (UTC): 2026-11-15T18:34:29+00:00
+==============================================================================
+
+PS> kubectl apply -f k8s/04-ml-training-wrong-toleration.yaml
+deployment.apps/ml-training-typo created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                               READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+ml-training-typo-bbf664d69-bn29g   1/1     Running   0          3s    10.244.1.83   taints-lab-worker   <none>           <none>
+ml-training-typo-bbf664d69-bw9dt   1/1     Running   0          3s    10.244.1.86   taints-lab-worker   <none>           <none>
+ml-training-typo-bbf664d69-gwwht   1/1     Running   0          3s    10.244.1.85   taints-lab-worker   <none>           <none>
+ml-training-typo-bbf664d69-hrcdx   1/1     Running   0          3s    10.244.1.84   taints-lab-worker   <none>           <none>
+
+PS> kubectl describe pod -n gpu-lab ml-training-typo-bbf664d69-bn29g    (lines: Node, Tolerations)
+Node:             taints-lab-worker/172.18.0.2
+Tolerations:                 hardware=gpus:NoSchedule
+                             node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "ml-training-typo" deleted from gpu-lab namespace
+pod "ml-training-typo-bbf664d69-bn29g" deleted from gpu-lab namespace
+pod "ml-training-typo-bbf664d69-bw9dt" deleted from gpu-lab namespace
+pod "ml-training-typo-bbf664d69-gwwht" deleted from gpu-lab namespace
+pod "ml-training-typo-bbf664d69-hrcdx" deleted from gpu-lab namespace
+

@@ -1,0 +1,12 @@
+step,name,title,start_utc,end_utc,duration_s,recovery_after_untaint_s
+2,cluster_and_builtin_taint,Cluster check and the control plane's built-in taint,2026-11-15T18:33:52+00:00,2026-11-15T18:33:53+00:00,1.0,
+3,S1_baseline_no_reservation,S1 Baseline - GPU node not reserved yet; website spreads everywhere,2026-11-15T18:33:53+00:00,2026-11-15T18:33:59+00:00,5.7,
+4,reserve_gpu_node,Reserve the GPU node: label + NoSchedule taint (running Pods are NOT evicted),2026-11-15T18:33:59+00:00,2026-11-15T18:34:18+00:00,19.0,
+5,S2_website_no_toleration,S2 Website WITHOUT toleration - kept off the GPU node,2026-11-15T18:34:18+00:00,2026-11-15T18:34:24+00:00,6.1,
+6,S3_ml_toleration_only,"S3 ML job WITH toleration only - allowed on the GPU node, not forced",2026-11-15T18:34:24+00:00,2026-11-15T18:34:29+00:00,5.1,
+7,S4_ml_wrong_toleration,S4 ML job with a TYPO in its toleration (gpus) - still blocked,2026-11-15T18:34:29+00:00,2026-11-15T18:34:34+00:00,5.0,
+8,S5_dedicated_gpu_node,S5 Dedicated GPU node - ML (toleration + nodeSelector) next to the website,2026-11-15T18:34:34+00:00,2026-11-15T18:34:47+00:00,12.9,
+9,S6_general_node_maintenance_pending,S6 General node under maintenance (hard taint) - website has nowhere to go -> Pending,2026-11-15T18:34:47+00:00,2026-11-15T18:35:11+00:00,24.1,4.6
+10,S7_soft_reservation_prefer_no_schedule,S7 Soft reservation - GPU taint changed to PreferNoSchedule,2026-11-15T18:35:11+00:00,2026-11-15T18:35:22+00:00,10.8,
+11,S8_gpu_fault_noexecute,S8 GPU fault - NoExecute evicts running Pods,2026-11-15T18:35:22+00:00,2026-11-15T18:36:27+00:00,65.5,
+12,cleanup,"Clean-up - remove the lab taints, the label and the namespace",2026-11-15T18:36:27+00:00,2026-11-15T18:36:35+00:00,7.9,

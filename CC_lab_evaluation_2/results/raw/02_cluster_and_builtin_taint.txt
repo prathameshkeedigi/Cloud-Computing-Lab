@@ -1,0 +1,26 @@
+==============================================================================
+Step 02 - Cluster check and the control plane's built-in taint
+Started (UTC): 2026-11-15T18:33:52+00:00
+==============================================================================
+
+PS> kubectl version
+Client Version: v1.36.1
+Kustomize Version: v5.8.1
+Server Version: v1.37.0
+
+PS> kubectl get nodes -o wide
+NAME                       STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                             CONTAINER-RUNTIME
+taints-lab-control-plane   Ready    control-plane   25m   v1.37.0   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.6.87.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+taints-lab-worker          Ready    <none>          24m   v1.37.0   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.6.87.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+taints-lab-worker2         Ready    <none>          24m   v1.37.0   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.6.87.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+
+PS> kubectl get nodes -L hardware -o custom-columns=NODE:.metadata.name,TAINT-KEYS:.spec.taints[*].key,VALUES:.spec.taints[*].value,EFFECTS:.spec.taints[*].effect,HARDWARE-LABEL:.metadata.labels.hardware
+NODE                       TAINT-KEYS                              VALUES   EFFECTS      HARDWARE-LABEL
+taints-lab-control-plane   node-role.kubernetes.io/control-plane   <none>   NoSchedule   <none>
+taints-lab-worker          <none>                                  <none>   <none>       <none>
+taints-lab-worker2         <none>                                  <none>   <none>       <none>
+
+PS> kubectl describe node taints-lab-control-plane | Select-String Taints,Unschedulable
+Taints:             node-role.kubernetes.io/control-plane:NoSchedule
+Unschedulable:      false
+

@@ -1,0 +1,19 @@
+# Problem 07 - Pod Scheduling Using Taints and Tolerations
+# A local 3-node Kubernetes cluster: 1 control plane + 2 workers.
+# Each "node" is a Docker container created by kind.
+#
+# Create:  kind create cluster --name taints-lab --config k8s/00-kind-cluster.yaml
+# Delete:  kind delete cluster --name taints-lab
+#
+# Node names that kind gives this cluster, and their role in the scenario:
+#   taints-lab-control-plane   manager node (already carries a NoSchedule taint)
+#   taints-lab-worker          GENERAL-PURPOSE node (website, ordinary workloads)
+#   taints-lab-worker2         "GPU NODE" - reserved for ML jobs with a taint
+#                              (kind nodes have no real GPU; the node is reserved
+#                               by its taint and label, exactly as on real hardware)
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker

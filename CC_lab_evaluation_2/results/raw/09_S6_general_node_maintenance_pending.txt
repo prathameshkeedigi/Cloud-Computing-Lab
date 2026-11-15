@@ -1,0 +1,50 @@
+==============================================================================
+Step 09 - S6 General node under maintenance (hard taint) - website has nowhere to go -> Pending
+Started (UTC): 2026-11-15T18:34:47+00:00
+==============================================================================
+
+PS> kubectl taint nodes taints-lab-worker maintenance=true:NoSchedule
+node/taints-lab-worker tainted
+
+PS> kubectl get nodes -L hardware -o custom-columns=NODE:.metadata.name,TAINT-KEYS:.spec.taints[*].key,VALUES:.spec.taints[*].value,EFFECTS:.spec.taints[*].effect,HARDWARE-LABEL:.metadata.labels.hardware
+NODE                       TAINT-KEYS                              VALUES   EFFECTS      HARDWARE-LABEL
+taints-lab-control-plane   node-role.kubernetes.io/control-plane   <none>   NoSchedule   <none>
+taints-lab-worker          maintenance                             true     NoSchedule   <none>
+taints-lab-worker2         hardware                                gpu      NoSchedule   gpu
+
+PS> kubectl apply -f k8s/02-website.yaml
+deployment.apps/website created
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP       NODE     NOMINATED NODE   READINESS GATES
+website-58cccc4b78-6xwjq   0/1     Pending   0          15s   <none>   <none>   <none>           <none>
+website-58cccc4b78-hw67b   0/1     Pending   0          15s   <none>   <none>   <none>           <none>
+website-58cccc4b78-kbhhl   0/1     Pending   0          15s   <none>   <none>   <none>           <none>
+website-58cccc4b78-w8k9h   0/1     Pending   0          15s   <none>   <none>   <none>           <none>
+
+PS> kubectl describe pod -n gpu-lab website-58cccc4b78-6xwjq    (lines: Events)
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  15s   default-scheduler  0/3 nodes are available: 3 node(s) had untolerated taint(s). preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.
+
+--- maintenance finished: remove the taint (the trailing '-' removes it) ---
+PS> kubectl taint nodes taints-lab-worker maintenance=true:NoSchedule-
+node/taints-lab-worker untainted
+
+All Pending Pods were scheduled and Ready 4.6 s after the taint was removed
+
+PS> kubectl get pods -n gpu-lab -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+website-58cccc4b78-6xwjq   1/1     Running   0          21s   10.244.1.91   taints-lab-worker   <none>           <none>
+website-58cccc4b78-hw67b   1/1     Running   0          21s   10.244.1.92   taints-lab-worker   <none>           <none>
+website-58cccc4b78-kbhhl   1/1     Running   0          21s   10.244.1.93   taints-lab-worker   <none>           <none>
+website-58cccc4b78-w8k9h   1/1     Running   0          21s   10.244.1.94   taints-lab-worker   <none>           <none>
+
+PS> kubectl delete deployment,pod -n gpu-lab --all --wait=true
+deployment.apps "website" deleted from gpu-lab namespace
+pod "website-58cccc4b78-6xwjq" deleted from gpu-lab namespace
+pod "website-58cccc4b78-hw67b" deleted from gpu-lab namespace
+pod "website-58cccc4b78-kbhhl" deleted from gpu-lab namespace
+pod "website-58cccc4b78-w8k9h" deleted from gpu-lab namespace
+

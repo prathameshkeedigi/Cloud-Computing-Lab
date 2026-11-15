@@ -1,0 +1,49 @@
+snapshot,workload,pod,node,phase,ready,tolerations,node_selector,scheduled_after_s,ready_after_s
+S1 Baseline: no taint yet,website,website-58cccc4b78-67kxw,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S1 Baseline: no taint yet,website,website-58cccc4b78-77fz8,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+S1 Baseline: no taint yet,website,website-58cccc4b78-kghdk,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+S1 Baseline: no taint yet,website,website-58cccc4b78-rxf8n,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S1b 15 s after GPU taint: old Pods stay,website,website-58cccc4b78-67kxw,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S1b 15 s after GPU taint: old Pods stay,website,website-58cccc4b78-77fz8,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+S1b 15 s after GPU taint: old Pods stay,website,website-58cccc4b78-kghdk,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+S1b 15 s after GPU taint: old Pods stay,website,website-58cccc4b78-rxf8n,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S2 Website, no toleration",website,website-58cccc4b78-dfdjr,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S2 Website, no toleration",website,website-58cccc4b78-kgf95,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S2 Website, no toleration",website,website-58cccc4b78-kjvbg,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S2 Website, no toleration",website,website-58cccc4b78-q2m6g,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S3 ML job, toleration only",ml-training,ml-training-59885bcccc-6mfgl,taints-lab-worker,Running,yes,hardware=gpu:NoSchedule,none,0.0,2.0
+"S3 ML job, toleration only",ml-training,ml-training-59885bcccc-8mvk6,taints-lab-worker,Running,yes,hardware=gpu:NoSchedule,none,0.0,2.0
+"S3 ML job, toleration only",ml-training,ml-training-59885bcccc-zfwtn,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,none,0.0,2.0
+"S3 ML job, toleration only",ml-training,ml-training-59885bcccc-zwf2n,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,none,0.0,2.0
+"S4 ML job, wrong toleration",ml-training-typo,ml-training-typo-bbf664d69-bn29g,taints-lab-worker,Running,yes,hardware=gpus:NoSchedule,none,0.0,2.0
+"S4 ML job, wrong toleration",ml-training-typo,ml-training-typo-bbf664d69-bw9dt,taints-lab-worker,Running,yes,hardware=gpus:NoSchedule,none,0.0,2.0
+"S4 ML job, wrong toleration",ml-training-typo,ml-training-typo-bbf664d69-gwwht,taints-lab-worker,Running,yes,hardware=gpus:NoSchedule,none,0.0,2.0
+"S4 ML job, wrong toleration",ml-training-typo,ml-training-typo-bbf664d69-hrcdx,taints-lab-worker,Running,yes,hardware=gpus:NoSchedule,none,0.0,2.0
+S5 Dedicated: website + ML job,ml-training,ml-training-764dbccb48-9gkx8,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,hardware=gpu,0.0,1.0
+S5 Dedicated: website + ML job,ml-training,ml-training-764dbccb48-qthzp,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,hardware=gpu,0.0,1.0
+S5 Dedicated: website + ML job,ml-training,ml-training-764dbccb48-rqsj6,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,hardware=gpu,0.0,1.0
+S5 Dedicated: website + ML job,website,website-58cccc4b78-jfl82,taints-lab-worker,Running,yes,none,none,0.0,3.0
+S5 Dedicated: website + ML job,website,website-58cccc4b78-ljtvn,taints-lab-worker,Running,yes,none,none,0.0,3.0
+S5 Dedicated: website + ML job,website,website-58cccc4b78-srpq4,taints-lab-worker,Running,yes,none,none,0.0,3.0
+S5 Dedicated: website + ML job,website,website-58cccc4b78-z7xwg,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S6 Maintenance + GPU hard taint: Pending,website,website-58cccc4b78-6xwjq,Pending (no node),Pending,no,none,none,,
+S6 Maintenance + GPU hard taint: Pending,website,website-58cccc4b78-hw67b,Pending (no node),Pending,no,none,none,,
+S6 Maintenance + GPU hard taint: Pending,website,website-58cccc4b78-kbhhl,Pending (no node),Pending,no,none,none,,
+S6 Maintenance + GPU hard taint: Pending,website,website-58cccc4b78-w8k9h,Pending (no node),Pending,no,none,none,,
+S6b Maintenance over: Pods recover,website,website-58cccc4b78-6xwjq,taints-lab-worker,Running,yes,none,none,16.0,18.0
+S6b Maintenance over: Pods recover,website,website-58cccc4b78-hw67b,taints-lab-worker,Running,yes,none,none,16.0,18.0
+S6b Maintenance over: Pods recover,website,website-58cccc4b78-kbhhl,taints-lab-worker,Running,yes,none,none,16.0,19.0
+S6b Maintenance over: Pods recover,website,website-58cccc4b78-w8k9h,taints-lab-worker,Running,yes,none,none,16.0,19.0
+S7 Soft: GPU node avoided,website,website-58cccc4b78-5d829,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S7 Soft: GPU node avoided,website,website-58cccc4b78-5rnv9,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S7 Soft: GPU node avoided,website,website-58cccc4b78-8n8tc,taints-lab-worker,Running,yes,none,none,0.0,2.0
+S7 Soft: GPU node avoided,website,website-58cccc4b78-b9gbn,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-5d829,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-5rnv9,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-8n8tc,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-b9gbn,taints-lab-worker,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-c8sp9,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+"S7b Soft: no other node, GPU node used",website,website-58cccc4b78-j7hbq,taints-lab-worker2,Running,yes,none,none,0.0,2.0
+S8 Before the GPU fault,gpu-fault-test,gpu-monitor,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule; gpu-fault:NoExecute,hardware=gpu,0.0,2.0
+S8 Before the GPU fault,gpu-fault-test,ml-job-grace-30s,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule; gpu-fault=true:NoExecute (30s),hardware=gpu,0.0,2.0
+S8 Before the GPU fault,gpu-fault-test,ml-job-no-grace,taints-lab-worker2,Running,yes,hardware=gpu:NoSchedule,hardware=gpu,0.0,2.0

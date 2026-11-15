@@ -1,0 +1,51 @@
+# S5 - the CORRECT setup for a reserved GPU node:
+#   toleration   -> the job may pass the GPU node's taint  hardware=gpu:NoSchedule
+#   nodeSelector -> the job may run ONLY on nodes labelled  hardware=gpu
+# Deployed together with the website (02-website.yaml).
+# Expected: all ML replicas on the GPU node; all website replicas on the general node.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-training
+  namespace: gpu-lab
+  labels: {app: ml-training, tier: ml}
+spec:
+  replicas: 3
+  selector:
+    matchLabels: {app: ml-training}
+  template:
+    metadata:
+      labels: {app: ml-training, tier: ml}
+    spec:
+      nodeSelector:
+        hardware: gpu
+      tolerations:
+      - key: "hardware"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
+      containers:
+      - name: trainer
+        image: python:3.12-alpine
+        command: ["python", "-u", "-c"]
+        args:
+        - |
+          import math, os, signal, sys, time
+          node = os.environ.get("NODE_NAME", "?")
+          def stop(sig, frame):       # Kubernetes sends SIGTERM before stopping a Pod
+              print("SIGTERM received - saving checkpoint and exiting", flush=True)
+              sys.exit(0)
+          signal.signal(signal.SIGTERM, stop)
+          print(f"[simulated] ML training job started on node {node}")
+          loss = 2.5
+          for epoch in range(1, 100000):
+              s = sum(math.sqrt(i) for i in range(20000))   # small CPU work
+              loss = loss * 0.97
+              print(f"epoch {epoch:5d}  loss {loss:.4f}  node {node}")
+              time.sleep(5)
+        env:
+        - name: NODE_NAME
+          valueFrom: {fieldRef: {fieldPath: spec.nodeName}}
+        resources:
+          requests: {cpu: 20m, memory: 32Mi}
+          limits: {cpu: 200m, memory: 128Mi}
